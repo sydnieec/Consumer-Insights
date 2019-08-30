@@ -16,11 +16,21 @@ function httpGet(theUrl)
     }
     return comments_array;
     }
-
+function httpGetLocalHost(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    
+    xmlHttp.send(null);
+    console.log("Get request response:" + xmlHttp.responseText);
+    return xmlHttp.responseText;
+} 
 function main(){
     comments.addEventListener('click', function(){
         //commentsid.innerHTML=httpGet("https://graph.facebook.com/100011376370919_1142716599450875/comments?access_token=EAAQZCkGoNplIBAEAfbQYneBUrna25JBgeMnh4dbHH0hpZAxSBaVmNRrrjwkjJ2sfFJm3yqdSQ3mO6LX5dVPPhBRxafqNYP5R19lGsCeTwH3BQnSEBiioNoRe4gNf7cZBFwxyIKZAZCr3ZCJ5lpF58EXkdavBn7BVFxkRzX8TGHZC80Vuu18S28sPfYrOo3Ws1f090l81Py0K0b0Ww48Osov")
         commentsid.innerHTML=text;
+        commentsid.innerHTML= (httpGetLocalHost("http://localhost:8000/"));
+      // httpGetAsync("http://localhost:8000/", "" );
     })
 }
 main();

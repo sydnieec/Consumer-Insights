@@ -20,18 +20,45 @@ from http.server import  BaseHTTPRequestHandler, SimpleHTTPRequestHandler, socke
 
 
 class Server(BaseHTTPRequestHandler):
+   
+
+    # def _set_headers(self):
+    #     self.send_response(200)
+    #     self.send_header('Content-type', 'text/html')
+    #     self.end_headers()
+
+    # def do_GET(self):
+    #     print ("help", flush=True)
+    #     self._set_headers()
+    #     self.wfile.write("<html><head><title>Title goes here.</title></head>".encode("utf-8"))
+    #     print ("works", flush=True)
+    #     print("works TEXST:" + self.wfile , flush=True)
+        
+
+
+    
     def do_GET(self):
+        
         print ("Got Get Request",flush=True)
-        # if self.path == '/':
-        #     self.path = '/index.html'
-        try:
-            file_to_open = open(self.path[1:]).read()
-            self.send_response(200)
-        except:
-            file_to_open="File not found"
-            self.send_response(404)
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
         self.end_headers()
-        self.wfile.write(bytes(file_to_open, 'utf-8'))
+        self.wfile.write(b"<html><body><h1>hi!</h1></body></html>")
+          
+      
+    #     # # if self.path == '/':
+    #     # #     self.path = '/index.html'
+    #     # try:
+    #     #     self.send_response(200)
+    #     #     self.wfile.write(b'Hello, world!')
+    #     #     print ("accepted request" ,flush=True)
+    #     #   #  file_to_open = open(self.path[1:]).read()
+    #     #   #  self.send_response(200)
+    #     # except:
+    #     #     # file_to_open="File not found"
+    #     #     self.send_response(404)
+    #     # self.wfile.write(bytes(file_to_open, 'utf-8'))
+    #     return 
 
 
 print ("Start Server",flush=True)
@@ -39,7 +66,7 @@ httpd = HTTPServer(('', 8000), Server)
 httpd.serve_forever()
 
 
-
+#send the fb comments to the server 
 # from http.server import BaseHTTPRequestHandler, HTTPServer
 # import time
 
