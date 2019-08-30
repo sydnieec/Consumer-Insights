@@ -43,7 +43,10 @@ class Server(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
-        self.wfile.write(b"<html><body><h1>hi!</h1></body></html>")
+        self.wfile.write(b"<foo>bar</foo>")
+      #  comments = self.request.get("Comments")
+       # print (comments, flush=True)
+
           
       
     #     # # if self.path == '/':

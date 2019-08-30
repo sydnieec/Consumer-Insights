@@ -19,8 +19,8 @@ function httpGet(theUrl)
 function httpGetLocalHost(theUrl)
 {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    
+    xmlHttp.open( "GET", theUrl, false  ); // false for synchronous request
+   // xmlHttp.setRequestHeader("Comments", "this is a commment");
     xmlHttp.send(null);
     console.log("Get request response:" + xmlHttp.responseText);
     return xmlHttp.responseText;
